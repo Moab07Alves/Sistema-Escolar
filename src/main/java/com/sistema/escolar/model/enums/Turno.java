@@ -6,20 +6,20 @@ public enum Turno {
     TARDE("T", "Tarde"),
     NOITE("N", "Noite");
 
-    private String sigla;
+    private String codigo;
     private String descricao;
 
-    Turno (String sigla, String descricao) {
-        this.sigla = sigla;
+    Turno (String codigo, String descricao) {
+        this.codigo = codigo;
         this.descricao = descricao;
     }
 
-    public String getSigla() {
-        return sigla;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getDescricao() {
