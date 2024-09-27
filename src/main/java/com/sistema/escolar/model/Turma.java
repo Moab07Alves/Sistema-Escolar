@@ -2,11 +2,10 @@ package com.sistema.escolar.model;
 
 import com.sistema.escolar.model.enums.Turno;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Getter
@@ -31,9 +30,23 @@ public class Turma {
     @Enumerated(EnumType.STRING)
     private Turno turno;
 
+    @OneToMany(mappedBy = "turma")
+    private List<Aluno> alunos;
+
+    @ManyToMany
+    @JoinTable(name = "turma_disciplina",
+            joinColumns = @JoinColumn(name = "id_turma"),
+            inverseJoinColumns = @JoinColumn(name = "id_disciplina"))
+    private List<Disciplina> disciplinas;
+
     public Turma(String serie, String codigo, Turno turno) {
         this.serie = serie;
         this.codigo = codigo;
+        this.turno = turno;
+    }
+
+    public Turma(String serie, Turno turno) {
+        this.serie = serie;
         this.turno = turno;
     }
 
@@ -47,4 +60,16 @@ public class Turma {
                 "}\n";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Turma turma = (Turma) o;
+        return Objects.equals(id, turma.id) && Objects.equals(serie, turma.serie) && Objects.equals(codigo, turma.codigo) && turno == turma.turno;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, serie, codigo, turno);
+    }
 }

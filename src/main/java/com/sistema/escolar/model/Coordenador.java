@@ -5,5 +5,5 @@ import jakarta.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("Coordenador")
-public class Coordenador extends Usuario{
+public class Coordenador extends Usuario {
 }
