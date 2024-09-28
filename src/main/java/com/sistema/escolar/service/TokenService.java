@@ -1,7 +1,6 @@
 package com.sistema.escolar.service;
 
 import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
@@ -25,7 +24,6 @@ public class TokenService {
             String token = JWT.create()
                     .withIssuer("sistema-escolar")
                     .withSubject(usuario.getEmail())
-                    .withExpiresAt(genExpirationDate())
                     .sign(algorithm);
             return token;
         }

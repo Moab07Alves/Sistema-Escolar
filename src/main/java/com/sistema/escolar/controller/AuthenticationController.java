@@ -7,7 +7,6 @@ import com.sistema.escolar.model.Aluno;
 import com.sistema.escolar.model.Coordenador;
 import com.sistema.escolar.model.Professor;
 import com.sistema.escolar.model.Usuario;
-import com.sistema.escolar.model.enums.Role;
 import com.sistema.escolar.repository.AlunoRepository;
 import com.sistema.escolar.repository.CoordenadorRepository;
 import com.sistema.escolar.repository.ProfessorReposiroty;
