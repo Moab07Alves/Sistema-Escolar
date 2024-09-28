@@ -1,5 +1,6 @@
 package com.sistema.escolar.security;
 
+import com.sistema.escolar.model.enums.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +30,8 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorizate -> authorizate
                         .requestMatchers(HttpMethod.POST, "auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "auth/register").permitAll()
+                        .requestMatchers(HttpMethod.POST, "coordenador/turma/criar").hasRole("COORDENADOR")
+                        .requestMatchers(HttpMethod.POST, "coordenador/turma/criar").hasRole("COORDENADOR")
                         .anyRequest()
                         .authenticated()
                 )
