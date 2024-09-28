@@ -27,6 +27,18 @@ public class CoordenadorController {
        return ResponseEntity.ok(turma);
     }
 
+    @PutMapping("/turma/atualizar/{idTurma}")
+    public ResponseEntity<Turma> atualizarTurma(@PathVariable("idTurma") Long idTurma, @RequestBody TurmaDTO turmaDTO) {
+        Turma turma = coordenadorService.atualizarTurma(idTurma, new Turma(turmaDTO.serie(), turmaDTO.codigo(), turmaDTO.turno()));
+        return ResponseEntity.ok(turma);
+    }
+
+    @DeleteMapping("/turma/excluir/{idTurma}")
+    public ResponseEntity<?> excluirTurma(@PathVariable("idTurma") Long idTurma) {
+        coordenadorService.removerTurma(idTurma);
+        return ResponseEntity.ok().build();
+    }
+
     //---------- DISCIPLINA ----------//
 
 }

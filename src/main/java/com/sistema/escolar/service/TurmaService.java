@@ -22,7 +22,9 @@ public class TurmaService {
         Optional<Turma> turmaOptional = turmaRepository.findById(idTurma);
         if (turmaOptional.isPresent()) {
             Turma turmaAtualizada = turmaOptional.get();
-
+            turmaAtualizada.setSerie(turma.getSerie());
+            turmaAtualizada.setCodigo(turma.getCodigo());
+            turmaAtualizada.setTurno(turma.getTurno());
             return turmaRepository.save(turmaAtualizada);
         }
         return null; // LANÇAR EXCEÇÃO

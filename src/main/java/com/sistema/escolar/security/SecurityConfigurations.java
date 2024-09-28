@@ -30,8 +30,7 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorizate -> authorizate
                         .requestMatchers(HttpMethod.POST, "auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "auth/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "coordenador/turma/criar").hasRole("COORDENADOR")
-                        .requestMatchers(HttpMethod.POST, "coordenador/turma/criar").hasRole("COORDENADOR")
+                        .requestMatchers("coordenador/**").hasRole("COORDENADOR")
                         .anyRequest()
                         .authenticated()
                 )
