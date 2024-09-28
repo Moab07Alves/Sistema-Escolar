@@ -39,7 +39,7 @@ public class TurmaService {
     }
 
     public Turma buscarPorId(Long idTurma) {
-        return turmaRepository.findById(idTurma).get();
+        return turmaRepository.findById(idTurma).orElse(null);
     }
 
 }

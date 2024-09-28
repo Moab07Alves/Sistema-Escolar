@@ -1,5 +1,6 @@
 package com.sistema.escolar.service;
 
+import com.sistema.escolar.model.Disciplina;
 import com.sistema.escolar.model.Turma;
 import com.sistema.escolar.repository.CoordenadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class CoordenadorService {
 
     @Autowired
     private TurmaService turmaService;
+
+    @Autowired
+    private DisciplinaService disciplinaService;
 
     //---------- COORDENADOR ----------//
 
@@ -44,5 +48,24 @@ public class CoordenadorService {
 
     //---------- DISCIPLINA ----------//
 
+    public Disciplina criarDisciplina(Disciplina disciplina) {
+        return disciplinaService.salvar(disciplina);
+    }
+
+    public Disciplina atualizarDisciplina(Long idDisciplina, Disciplina disciplina) {
+        return disciplinaService.atualizar(idDisciplina, disciplina);
+    }
+
+    public void removerDisciplina(Long idDisciplina) {
+        disciplinaService.excluir(idDisciplina);
+    }
+
+    public List<Disciplina> listarDisciplinas() {
+        return disciplinaService.listar();
+    }
+
+    public Disciplina buscarDisciplina(Long idDisciplina) {
+        return disciplinaService.buscarPorId(idDisciplina);
+    }
 
 }

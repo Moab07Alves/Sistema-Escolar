@@ -1,6 +1,8 @@
 package com.sistema.escolar.controller;
 
+import com.sistema.escolar.dto.DisciplinaDTO;
 import com.sistema.escolar.dto.TurmaDTO;
+import com.sistema.escolar.model.Disciplina;
 import com.sistema.escolar.model.Turma;
 import com.sistema.escolar.service.CoordenadorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +53,11 @@ public class CoordenadorController {
     }
 
     //---------- DISCIPLINA ----------//
+
+    @PostMapping("/disciplina/criar")
+    public ResponseEntity<Disciplina> criarDisciplina(@RequestBody DisciplinaDTO disciplinaDTO) {
+        Disciplina disciplina = coordenadorService.criarDisciplina(new Disciplina(disciplinaDTO.nome(), disciplinaDTO.serie(), disciplinaDTO.turno(), disciplinaDTO.horarioInicio(), disciplinaDTO.horarioFinal()));
+        return ResponseEntity.ok(disciplina);
+    }
 
 }
