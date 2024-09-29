@@ -2,6 +2,7 @@ package com.sistema.escolar.controller;
 
 import com.sistema.escolar.dto.DisciplinaDTO;
 import com.sistema.escolar.dto.TurmaDTO;
+import com.sistema.escolar.model.Coordenador;
 import com.sistema.escolar.model.Disciplina;
 import com.sistema.escolar.model.Turma;
 import com.sistema.escolar.service.CoordenadorService;
@@ -20,7 +21,15 @@ public class CoordenadorController {
 
     //---------- COORDENADOR ----------//
 
+    @GetMapping("/listar")
+    public ResponseEntity<List<Coordenador>> listarCoordenadores() {
+        return ResponseEntity.ok(coordenadorService.listarCoordenador());
+    }
 
+    @GetMapping("/buscar")
+    public ResponseEntity<List<Coordenador>> buscarCoordenadorPorNome(@RequestParam String nome) {
+        return ResponseEntity.ok(coordenadorService.buscarCoordenadorPorNome(nome));
+    }
 
     //---------- TURMA ----------//
 

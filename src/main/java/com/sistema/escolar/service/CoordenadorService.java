@@ -1,5 +1,6 @@
 package com.sistema.escolar.service;
 
+import com.sistema.escolar.model.Coordenador;
 import com.sistema.escolar.model.Disciplina;
 import com.sistema.escolar.model.Turma;
 import com.sistema.escolar.repository.CoordenadorRepository;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CoordenadorService {
@@ -22,7 +24,13 @@ public class CoordenadorService {
 
     //---------- COORDENADOR ----------//
 
+    public List<Coordenador> listarCoordenador() {
+        return coordenadorRepository.findAll();
+    }
 
+    public List<Coordenador> buscarCoordenadorPorNome(String nome) {
+        return coordenadorRepository.findByNome(nome);
+    }
 
     //---------- TURMA ----------//
 
