@@ -60,4 +60,16 @@ public class CoordenadorController {
         return ResponseEntity.ok(disciplina);
     }
 
+    @PutMapping("/disciplina/atualizar/{idDisciplina}")
+    public ResponseEntity<Disciplina> atualizarDisciplina(@PathVariable("idDisciplina") Long idDisciplina, @RequestBody DisciplinaDTO disciplinaDTO) {
+        Disciplina disciplina = coordenadorService.atualizarDisciplina(idDisciplina, new Disciplina(disciplinaDTO.nome(), disciplinaDTO.serie(), disciplinaDTO.turno(), disciplinaDTO.horarioInicio(), disciplinaDTO.horarioFinal()));
+        return ResponseEntity.ok(disciplina);
+    }
+
+    @DeleteMapping("/disciplina/excluir/{idDisciplina}")
+    public ResponseEntity<?> excluirDisciplina(@PathVariable("idDisciplina") Long idDisciplina) {
+        coordenadorService.removerDisciplina(idDisciplina);
+        return ResponseEntity.ok().build();
+    }
+
 }
