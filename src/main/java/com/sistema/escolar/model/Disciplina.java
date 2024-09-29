@@ -1,12 +1,14 @@
 package com.sistema.escolar.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sistema.escolar.model.enums.Turno;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,13 +34,15 @@ public class Disciplina {
     @Enumerated(EnumType.STRING)
     private Turno turno;
 
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "HH:mm")
     @DateTimeFormat(iso = ISO.TIME, pattern = "HH:mm")
     @Column(name = "horario_inicio", nullable = false)
-    private LocalDateTime horarioInicio;
+    private LocalTime horarioInicio;
 
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "HH:mm")
     @DateTimeFormat(iso = ISO.TIME, pattern = "HH:mm")
     @Column(name = "horario_final", nullable = false)
-    private LocalDateTime horarioFinal;
+    private LocalTime horarioFinal;
 
     @ManyToMany(mappedBy = "disciplinas")
     private List<Turma> turmas;
@@ -49,12 +53,14 @@ public class Disciplina {
             inverseJoinColumns = @JoinColumn(name = "id_professor"))
     private List<Professor> professores;
 
-    public Disciplina(String nome, String serie, Turno turno, LocalDateTime horarioInicio, LocalDateTime horarioFinal) {
+    public Disciplina(String nome, String serie, Turno turno, LocalTime horarioInicio, LocalTime horarioFinal) {
         this.nome = nome;
         this.serie = serie;
         this.turno = turno;
         this.horarioInicio = horarioInicio;
         this.horarioFinal = horarioFinal;
+        this.turmas = new ArrayList<>();
+        this.professores = new ArrayList<>();
     }
 
     @Override

@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -24,6 +25,7 @@ public class Professor extends Usuario{
 
     public Professor(String nome, String email, String senha) {
         super(nome, email, senha, Role.PROFESSOR);
+        this.disciplinas = new ArrayList<>();
     }
 
 }

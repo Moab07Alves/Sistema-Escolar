@@ -4,6 +4,7 @@ import com.sistema.escolar.model.enums.Turno;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,6 +43,8 @@ public class Turma {
         this.serie = serie;
         this.codigo = codigo;
         this.turno = turno;
+        this.disciplinas  = new ArrayList<>();
+        this.alunos  = new ArrayList<>();
     }
 
     public Turma(String serie, Turno turno) {
