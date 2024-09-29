@@ -72,4 +72,14 @@ public class CoordenadorController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/disciplina/listar")
+    public ResponseEntity<List<Disciplina>> listarDisciplinas() {
+        return ResponseEntity.ok(coordenadorService.listarDisciplinas());
+    }
+
+    @GetMapping("/disciplina/buscar/{idDisciplina}")
+    public ResponseEntity<Disciplina> buscarDisciplinaPorId(@PathVariable("idDisciplina") Long idDisciplina) {
+        return ResponseEntity.ok(coordenadorService.buscarDisciplina(idDisciplina));
+    }
+
 }
