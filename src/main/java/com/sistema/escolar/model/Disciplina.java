@@ -63,6 +63,14 @@ public class Disciplina {
         this.professores = new ArrayList<>();
     }
 
+    public void adicionarProfessor(Professor professor) {
+        this.professores.add(professor);
+    }
+
+    public void removerProfessor(Professor professor) {
+        this.professores.remove(professor);
+    }
+
     @Override
     public String toString() {
         return "{\n" +

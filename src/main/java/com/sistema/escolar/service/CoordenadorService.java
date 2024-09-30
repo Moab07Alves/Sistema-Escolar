@@ -24,6 +24,10 @@ public class CoordenadorService {
 
     //---------- COORDENADOR ----------//
 
+    public void excluir(Long idCoordenador) {
+        coordenadorRepository.deleteById(idCoordenador);
+    }
+
     public List<Coordenador> listarCoordenador() {
         return coordenadorRepository.findAll();
     }

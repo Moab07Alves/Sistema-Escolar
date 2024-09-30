@@ -21,6 +21,12 @@ public class CoordenadorController {
 
     //---------- COORDENADOR ----------//
 
+    @DeleteMapping("/excluir/")
+    public ResponseEntity<?> excluirCoordenador(@PathVariable("idCoordenador") Long idCoordenador){
+        coordenadorService.excluir(idCoordenador);
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/listar")
     public ResponseEntity<List<Coordenador>> listarCoordenadores() {
         return ResponseEntity.ok(coordenadorService.listarCoordenador());
