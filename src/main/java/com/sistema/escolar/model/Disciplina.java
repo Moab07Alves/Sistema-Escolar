@@ -1,6 +1,7 @@
 package com.sistema.escolar.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sistema.escolar.model.enums.Turno;
 import jakarta.persistence.*;
 import lombok.*;
@@ -44,6 +45,7 @@ public class Disciplina {
     @Column(name = "horario_final", nullable = false)
     private LocalTime horarioFinal;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "disciplinas")
     private List<Turma> turmas;
 
@@ -61,6 +63,14 @@ public class Disciplina {
         this.horarioFinal = horarioFinal;
         this.turmas = new ArrayList<>();
         this.professores = new ArrayList<>();
+    }
+
+    public void adicionarTurma(Turma turma) {
+        this.turmas.add(turma);
+    }
+
+    public void removeTurma(Turma turma) {
+        this.turmas.remove(turma);
     }
 
     public void adicionarProfessor(Professor professor) {

@@ -36,6 +36,24 @@ public class CoordenadorService {
         return coordenadorRepository.findByNome(nome);
     }
 
+    public Disciplina cadastrarDisciplinaEmTurma(Long idTurma, Long idDisciplina) {
+        Turma turma = turmaService.buscarPorId(idTurma);
+        Disciplina disciplina = disciplinaService.buscarPorId(idDisciplina);
+        turma.adicionarDisciplina(disciplina);
+        disciplina.adicionarTurma(turma);
+        turmaService.salvar(turma);
+        return disciplinaService.salvar(disciplina);
+    }
+
+    public void removerDisciplinaDeTurma( Long idTurma, Long idDisciplina) {
+        Turma turma = turmaService.buscarPorId(idTurma);
+        Disciplina disciplina = disciplinaService.buscarPorId(idDisciplina);
+        turma.removerDisciplina(disciplina);
+        disciplina.removeTurma(turma);
+        turmaService.salvar(turma);
+        disciplinaService.salvar(disciplina);
+    }
+
     //---------- TURMA ----------//
 
     public Turma criarTurma(Turma turma) {

@@ -37,6 +37,18 @@ public class CoordenadorController {
         return ResponseEntity.ok(coordenadorService.buscarCoordenadorPorNome(nome));
     }
 
+    @PostMapping("/cadastrar/disciplina/turma/{idDisciplina}")
+    public ResponseEntity<Disciplina> cadastrarDisciplinaEmTurma(@RequestParam("idTurma") Long idTurma, @PathVariable("idDisciplina") Long idDisciplina) {
+        Disciplina disciplina = coordenadorService.cadastrarDisciplinaEmTurma(idTurma, idDisciplina);
+        return ResponseEntity.ok(disciplina);
+    }
+
+    @DeleteMapping("/remover/disciplina/turma/{idDisciplina}")
+    public ResponseEntity<?> removerDisciplinaEmTurma(@RequestParam("idTurma") Long idTurma, @PathVariable("idDisciplina") Long idDisciplina) {
+        coordenadorService.removerDisciplinaDeTurma(idTurma, idDisciplina);
+        return ResponseEntity.ok().build();
+    }
+
     //---------- TURMA ----------//
 
     @PostMapping("/turma/criar")

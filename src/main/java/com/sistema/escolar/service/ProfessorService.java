@@ -36,6 +36,7 @@ public class ProfessorService {
     }
 
     public List<Disciplina> buscarDisciplinasMinistradas(Long idProfessor) {
+        if (professorReposiroty.findDisciplinasByProfessorId(idProfessor).isEmpty()) return null;
         return professorReposiroty.findDisciplinasByProfessorId(idProfessor);
     }
 

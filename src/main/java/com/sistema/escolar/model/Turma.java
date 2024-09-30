@@ -47,9 +47,20 @@ public class Turma {
         this.alunos  = new ArrayList<>();
     }
 
-    public Turma(String serie, Turno turno) {
-        this.serie = serie;
-        this.turno = turno;
+    public void adicionarDisciplina(Disciplina disciplina) {
+        this.disciplinas.add(disciplina);
+    }
+
+    public void removerDisciplina(Disciplina disciplina) {
+        this.disciplinas.remove(disciplina);
+    }
+
+    public void adicionarAluno(Aluno aluno) {
+        this.alunos.add(aluno);
+    }
+
+    public void removerAluno(Aluno aluno) {
+        this.alunos.remove(aluno);
     }
 
     @Override
